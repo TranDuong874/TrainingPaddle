@@ -1,6 +1,6 @@
 # Local Ubuntu-22.04 setup
-sudo cp /var/cudnn-local-repo-ubuntu2004-8.9.7.29/cudnn-local-30472A84-keyring.gpg /usr/share/keyrings/
-sudo dpkg -i cudnn-local-repo-ubuntu2004-8.9.7.29_1.0-1_amd64.deb
+sudo cp /var/cudnn-local-repo-ubuntu2204-8.9.7.29/cudnn-local-30472A84-keyring.gpg /usr/share/keyrings/
+sudo dpkg -i cudnn-local-repo-ubuntu2204-8.9.7.29_1.0-1_amd64.deb
 sudo apt-get update
 sudo apt-get install libcudnn8 libcudnn8-dev
 
@@ -44,7 +44,16 @@ pip install -q imutils
 pip install -q "paddleocr>=2.0.1" 
 python -m pip install -q paddlepaddle-gpu==2.5.2
 
+pip uninstall paddlepaddle-gpu
+pip install paddlepaddle-gpu==2.5.2.post117 -f https://www.paddlepaddle.org.cn/whl/linux/mkl/avx/stable.html
 
+# Install CUDA 12.x cuBLAS only (without full CUDA 12)
+wget https://developer.download.nvidia.com/compute/cuda/12.2.0/local_installers/cuda_12.2.0_535.54.03_linux.run
+sudo sh cuda_12.2.0_535.54.03_linux.run --toolkit --silent --no-opengl-libs --override
+
+# Create symbolic links
+sudo ln -sf /usr/local/cuda-12.2/lib64/libcublasLt.so.12 /usr/local/cuda-11.8/lib64/libcublasLt.so.12
+sudo ln -sf /usr/local/cuda-12.2/lib64/libcublas.so.12 /usr/local/cuda-11.8/lib64/libcublas.so.12
 
 python -c "
 import paddle
