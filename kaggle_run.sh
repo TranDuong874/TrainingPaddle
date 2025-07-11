@@ -1,0 +1,1 @@
+python3.11 -m paddle.distributed.launch tools/train.py -c training_config.yml
