@@ -1,1 +1,0 @@
-./train_data/images/000016493.jpg		0.0

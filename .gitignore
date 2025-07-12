@@ -1,7 +1,9 @@
 /Paddle-OCR-2.9.1
-/*.deb
-/*.zip
+*.deb
+*.zip
 /train_data
-/*.jpg
-/*.png
-/*.run
+*.jpg
+*.png
+*.run
+*.tar
+/ch_PP-OCRv3_rec_train
