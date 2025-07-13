@@ -8,3 +8,4 @@
 *.tar
 /ch_PP-OCRv3_rec_train
 /output
+/inference_rec
